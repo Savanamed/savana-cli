@@ -1,0 +1,41 @@
+#!/bin/bash
+url="https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"   
+case $1 in
+  install)
+    br=$(if hash curl 2>/dev/null; then echo "curl"; elif hash wget 2>/dev/null; then echo "wget"; fi);
+    if [ "$br" = "wget" ]; then
+      wget $url -O "awscliv2.zip"   
+    else
+      curl $url -o "awscliv2.zip"   
+    fi
+    rm -rf aws
+    unzip  awscliv2.zip
+    sudo ./aws/install
+    mkdir -p data/upload
+    mkdir -p data/download
+    rm "awscliv2.zip"
+    ;;
+  configure)
+    read -p 'Enter Access KEY: '
+    ak=$REPLY
+    read -p 'Enter Secret KEY: '
+    echo "";
+    sk=$REPLY
+    echo -e $ak"\n"$sk"\neu-west-1\n\n"|aws configure &>/dev/null
+    ;;
+  help)
+    ;;
+  ls)
+    user=`aws sts get-caller-identity|grep Arn|cut -d":" -f7|cut -d"/" -f2|cut -d'"' -f1`
+    aws s3 ls --recursive s3://timp-$user
+    ;;
+  sync)
+    user=`aws sts get-caller-identity|grep Arn|cut -d":" -f7|cut -d"/" -f2|cut -d'"' -f1`
+    echo $user
+    aws s3 sync data s3://timp-$user
+    #ojo que falta el --delete y sin el para el append
+    aws s3 sync s3://timp-$user/download data/download 
+    ;;
+  *)
+    echo "incorrect option: savana help"  
+esac
