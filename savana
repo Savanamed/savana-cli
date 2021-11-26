@@ -24,6 +24,13 @@ case $1 in
     echo -e $ak"\n"$sk"\neu-west-1\n\n"|aws configure &>/dev/null
     ;;
   help)
+cat << EOF
+options:
+install - install client software and creates directory structure
+configure - enter the credentials: Access Key and Secret Key
+sync - syncronize with repository: only update newer files
+ls - list all files and directories in the remote repository 
+EOF
     ;;
   ls)
     user=`aws sts get-caller-identity|grep Arn|cut -d":" -f7|cut -d"/" -f2|cut -d'"' -f1`

@@ -1,6 +1,12 @@
 switch ($args[0]) {
 "help" {
-        Write-Host "Help enter data"
+	Write-Host @"
+options:
+install - install client software and creates directory structure
+configure - enter the credentials: Access Key and Secret Key
+sync - syncronize with repository: only update newer files
+ls - list all files and directories in the remote repository 
+"@
 }
 "install" {
         msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
