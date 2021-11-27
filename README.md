@@ -24,8 +24,11 @@ $ sudo yum install -y zip
 Once we have the file downloaded, proceed with the installation:
 
 $ unzip awscliv2.zip
+
 $ sudo ./aws/install
+
 $ chmod +x savana
+
 $ ./savana install
 
 During this process you will be asked the root password to execute the installation.
@@ -39,6 +42,7 @@ For the installation phase we will need to have access as Administrator to the s
 Open powershell script as Administrator and create a new directory to contain the software and the files to be transfered:
 
 PS C:\> mkdir savana
+
 PS C:\> cd sanava
 
 Download the power script file savana.ps1:
