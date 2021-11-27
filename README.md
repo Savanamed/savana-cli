@@ -4,6 +4,7 @@ For the installation phase we will need to have root access to the system.
 Login as normal user and create a new directory which contains the software and the files to be transfered:
 
 $ mkdir savava
+
 $ cd savana
 
 Use cURL or wget depending on which utility is installed in your linux. Normally cURL is installed by default in RHEL and derivatives distros (RHEL, Centos, Fedora) and wget in debian derivative ones (Debian, Ubuntu,etc)
