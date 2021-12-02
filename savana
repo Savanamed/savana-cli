@@ -34,14 +34,14 @@ EOF
     ;;
   ls)
     user=`aws sts get-caller-identity|grep Arn|cut -d":" -f7|cut -d"/" -f2|cut -d'"' -f1`
-    aws s3 ls --recursive s3://timp-$user
+    aws s3 ls --recursive s3://$user
     ;;
   sync)
     user=`aws sts get-caller-identity|grep Arn|cut -d":" -f7|cut -d"/" -f2|cut -d'"' -f1`
     echo $user
-    aws s3 sync data s3://timp-$user
+    aws s3 sync data s3://$user
     #ojo que falta el --delete y sin el para el append
-    aws s3 sync s3://timp-$user/download data/download 
+    aws s3 sync s3://$user/download data/download 
     ;;
   *)
     echo "incorrect option: savana help"  
