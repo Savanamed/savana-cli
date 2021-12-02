@@ -4,6 +4,7 @@ For the installation phase we will need to have root access to the system.
 Login as normal user and create a new directory which contains the software and the files to be transfered:
 
 $ mkdir savava
+
 $ cd savana
 
 Use cURL or wget depending on which utility is installed in your linux. Normally cURL is installed by default in RHEL and derivatives distros (RHEL, Centos, Fedora) and wget in debian derivative ones (Debian, Ubuntu,etc)
@@ -23,8 +24,11 @@ $ sudo yum install -y zip
 Once we have the file downloaded, proceed with the installation:
 
 $ unzip awscliv2.zip
+
 $ sudo ./aws/install
+
 $ chmod +x savana
+
 $ ./savana install
 
 During this process you will be asked the root password to execute the installation.
@@ -38,6 +42,7 @@ For the installation phase we will need to have access as Administrator to the s
 Open powershell script as Administrator and create a new directory to contain the software and the files to be transfered:
 
 PS C:\> mkdir savana
+
 PS C:\> cd sanava
 
 Download the power script file savana.ps1:
